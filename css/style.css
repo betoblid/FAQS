@@ -1,54 +1,109 @@
-
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
- }
-
-.none{
-    display: none;
 }
 
-.section-faq{
-    min-height: 100vh;
-    width: 100%;
+:root{
+    --White: hsl(0, 0%, 100%);
+    --Light-pink: hsl(275, 100%, 97%);
+    --Grayish-purple: hsl(292, 16%, 49%);
+    --Dark-purple: hsl(292, 42%, 14%);
+}
+
+body{
+    background-image: url("../assest/background-pattern-desktop.svg");
+    background-color: var(--Light-pink);
+    background-repeat: no-repeat;
+    background-size: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to top, rgb(175, 175, 175) 60%, yellow 40%);
-   
+    min-height: 100vh;
+    color: var(--Dark-purple);
 }
-.container-faqs .logo{
+
+.section-faq{
+    margin-top: 10px;
+}
+
+
+.container-faqs {
     display: flex;
-    
-}
-.container-faqs{
-    padding: 30px 20px;
-    border-radius: 10px;
-    width: 500px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Propriedades a parte da function FAQ */
+    max-width: 720px;
     margin: 0 auto;
-    font-family: 'Work Sans', sans-serif;
-    background: white;
+    background: var(--White);
+    border-radius: 10px;
+    padding: 40px 20px;
+    box-shadow: 0 0 50px var(--Dark-purple);
+
 }
-.container .box-title {
+.logo{
+    display: flex;
+    align-self: flex-start;
+}
+
+.logo h1{
+    font: 800 40px 'Arial';
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.faq {
+    max-width: 700px;
+    width: 100%;
+    border-bottom: 2px solid var(--Light-pink);
+    cursor: pointer;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+}
+
+.box-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box-title h2{
+    font-size: 18px;
 }
 
-.container-faqs h1{
-    font-size: 42px;
-    padding-block: 10px;
-    font-weight: 700;
-    color: hsl(292, 42%, 14%);
-}
 
-.container h3{
+.faq .conteudo {
+    line-height: 1.6;
     font-size: 16px;
-    font-weight: 600;
-    padding-block: 20px;
+    padding-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
 }
-.none p{
-    color: hsl(292, 16%, 49%);
-    font-size: 14px;
+
+.faq.active .conteudo {
+    max-height: 300px;
+    animation: Fade .5s ease-in-out;
+}
+.conteudo p{
+    font: 400 14px 'Arial';
+    line-height: 1.8;
+}
+ /* Caso não queirar usar não é obrigado */
+ @keyframes Fade {
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media(max-width: 700px){
+    body{
+        background-image: url("../assest/background-pattern-mobile.svg");
+    }
 }

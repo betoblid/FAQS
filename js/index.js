@@ -1,19 +1,17 @@
-const containerFAQ = document.querySelectorAll(".none")
-const icon = document.querySelectorAll(".img-icon")
+const faqs = document.querySelectorAll(".faq")
+const img = document.querySelectorAll(".img-icon")
 
 
-function HeandlerFaqDescription(index) {
-    
-    if(document.getElementById("faq0").classList.contains("none")){
-        document.getElementById(`faq${index}`).classList.remove("none")
-         icon[index].setAttribute("src", "assest/icon-minus.svg")
-         icon[index].setAttribute("src", "assest/icon-minus.svg")
-    }else{
+
+faqs.forEach((faq, index) => {
+    faq.addEventListener("click", () => {
+        faq.classList.toggle("active")
+
+        if(img[index].getAttribute("src") === "assest/icon-minus.svg"){
+            img[index].setAttribute("src", "assest/icon-plus.svg")
+        }else{
+            img[index].setAttribute("src", "assest/icon-minus.svg")
+        }
         
-        document.getElementById(`faq${index}`).classList.add("none")
-         icon[index].setAttribute("src", "assest/icon-plus.svg")
-    }
-   
-   
-}
-
+    })
+})
